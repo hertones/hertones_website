@@ -1,0 +1,12 @@
+{
+  // Cloudflare Workers deploy config. Build with `npm run build`, deploy with `npx wrangler deploy`.
+  "name": "hertones-web",
+  "main": "dist/server/index.mjs",
+  "compatibility_date": "2026-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "dist/client",
+    "binding": "ASSETS"
+  },
+  "observability": { "enabled": true }
+}
