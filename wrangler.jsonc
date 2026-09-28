@@ -1,12 +1,18 @@
 {
-  // Cloudflare Workers deploy config. Build with `npm run build`, deploy with `npx wrangler deploy`.
-  "name": "hertones-web-dev",
-  "main": "dist/server/index.mjs",
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "hertones-web",
+  "main": "src/index.ts",
   "compatibility_date": "2026-09-01",
   "compatibility_flags": ["nodejs_compat"],
-  "assets": {
-    "directory": "dist/client",
-    "binding": "ASSETS"
-  },
-  "observability": { "enabled": true }
+
+  "env": {
+    "dev": {
+      "name": "hertones-web-dev"
+      // dev-specific routes, vars, bindings go here
+    },
+    "qa": {
+      "name": "hertones-web-qa"
+      // qa-specific routes, vars, bindings go here
+    }
+  }
 }
