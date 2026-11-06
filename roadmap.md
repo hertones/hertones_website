@@ -15,3 +15,4 @@
 - [x] Homepage: every static AI model photo (bikini espresso and the other static models) recolored to the same ivory backdrop.
 - [x] Foundation collection: Boy Short | Caramel hover video plays at the same turning speed as Bikini | Espresso.
 - [x] Shop by Tone: hovering a color circle previews that shade temporarily; clicking it keeps it selected.
+- [x] Foundation collection: tapping a model photo on a phone opens that product page.
