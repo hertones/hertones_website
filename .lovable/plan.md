@@ -1,17 +1,23 @@
-# Put the Hertones site live on a Cloudflare Worker
+# Foundation Collection: still model, moves on hover
 
-The settings in the screenshot are correct: the name is `hertones-web`, the build command is `npm run build`, and the deploy command is `npx wrangler deploy`. You don't need to change any code.
+## What changes
+- All three model cards (Bikini | Espresso, French Cut | Mocha, Boy Short | Caramel) show a still photo of the model by default.
+- When a shopper hovers over a card, the model starts moving (the same front-to-back turn the Bikini card has now). Moving the mouse away pauses it and returns to the still photo.
+- Labels, links, "Cotton" badge and layout stay exactly the same.
 
-## Steps for you
-1. Scroll up and check that the branch is set to `dev`. Then click **Deploy**.
-2. When it finishes, open the new Worker and go to **Settings → Variables and Secrets**. Add these:
-   - `BREVO_API_KEY`
-   - `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`
-   - `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY`. Use the same values as the two `VITE_` ones.
-3. Run the deploy again so the new secrets take effect. You can click Retry, or push a small change to `dev`.
-4. Open the `hertones-web...workers.dev` link and check that the homepage shows up.
-5. Remove `dev-env.hertones.com` from the old **hertones-dev** Pages site. Then add it to the Worker under **Settings → Domains & Routes**.
+## Videos for each card
+- Bikini | Espresso: use the existing turn video; its still is the current cover image.
+- Boy Short | Caramel: use the existing turn video already made for this model (v3), with its matching still.
+- French Cut | Mocha: no video exists yet. I'll create a new silent, realistic turn video from the current Mocha model photo, keeping her face and look the same, and use her current photo as the still.
 
-## Steps for me
-- If the deploy fails, send me the error from the build log and I'll fix the code.
-- When the domain is moved, I'll check the homepage, the product pages and the signup popup on `dev-env.hertones.com`.
+## Phones and tablets (no hover)
+- Tapping the image plays the movement; tapping again pauses. A tap on the label/text still opens the product page.
+
+## Speed
+- Videos only start downloading when a shopper first hovers/taps (or the card is close on screen), so the page stays fast.
+
+## Technical details
+- Add `HoverVideo` component: `<img>` poster layered over a `<video muted loop playsInline preload="none">`; on `pointerenter` set src + `play()`, on `pointerleave` `pause()` + `currentTime=0`, fade poster via opacity. Touch: `onClick` toggles play with `preventDefault` on the media only.
+- Update `MODEL_LOOKS` in `ProductShowcase.tsx` to give every look `video` + `poster`.
+- Generate French Cut Mocha video, re-encode with ffmpeg (H.264, CRF 25, faststart, no audio) into `public/videos/`, extract poster into `public/images/video-posters/`.
+- Verify with Playwright: still on load, playing after hover, paused after leave, on desktop and mobile.
