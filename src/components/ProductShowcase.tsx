@@ -52,7 +52,7 @@ const ProductShowcase = () => {
                       src={look.video}
                       poster={look.poster}
                       alt={`hertones ${look.shape} in ${look.tone} on model`}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   ) : (
                     <img
