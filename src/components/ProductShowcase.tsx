@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import HoverVideo from "@/components/HoverVideo";
 const bikiniEspressoModel = { url: "/images/models/bikini-espresso-model.jpg" };
-const frenchCutMochaModel = { url: "/images/models/french-cut-mocha-model.webp" };
 const boyShortCaramelModel = { url: "/images/models/boy-short-caramel-asian-rear-straight-ahead-v3.webp" };
 const bikiniEspressoTurn = { url: "/videos/bikini-espresso-turn-v4-muted.mp4" };
 import { mapToneHandle } from "@/lib/productCatalog";
@@ -14,11 +13,12 @@ interface ModelLook {
   image: string;
   video?: string;
   poster?: string;
+  rearImage?: string;
 }
 
 const MODEL_LOOKS: ModelLook[] = [
   { shape: "Bikini", cutKey: "brazilian-bikini", tone: "Espresso", toneKey: "espresso", image: bikiniEspressoModel.url, video: bikiniEspressoTurn.url, poster: "/images/video-posters/bikini-espresso-turn.jpg" },
-  { shape: "French Cut", cutKey: "high-rise-french-cut", tone: "Mocha", toneKey: "mocha", image: frenchCutMochaModel.url },
+  { shape: "French Cut", cutKey: "high-rise-french-cut", tone: "Mocha", toneKey: "mocha", image: "/images/models/french-cut-mocha-model-front.jpg", rearImage: "/images/models/french-cut-mocha-model-rear.jpg" },
   { shape: "Boy Short", cutKey: "boy-short", tone: "Caramel", toneKey: "caramel", image: boyShortCaramelModel.url, video: "/videos/boy-short-caramel-turn-v3-muted.mp4", poster: "/images/video-posters/boy-short-caramel-turn-v3.jpg" },
 ];
 
@@ -54,6 +54,11 @@ const ProductShowcase = () => {
                       alt={`hertones ${look.shape} in ${look.tone} on model`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
+                  ) : look.rearImage ? (
+                    <div className="w-full h-full relative group-hover:scale-105 transition-transform duration-[1500ms] ease-out">
+                      <img src={look.image} alt={`hertones ${look.shape} in ${look.tone} on model, front`} className="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" />
+                      <img src={look.rearImage} alt={`hertones ${look.shape} in ${look.tone} on model, back`} className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-1000 ease-in-out group-hover:delay-500" loading="lazy" decoding="async" />
+                    </div>
                   ) : (
                     <img
                       src={look.image}
