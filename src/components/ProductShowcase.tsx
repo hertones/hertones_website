@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import LazyVideo from "@/components/LazyVideo";
+import HoverVideo from "@/components/HoverVideo";
 const bikiniEspressoModel = { url: "/images/models/bikini-espresso-model.jpg" };
 const frenchCutMochaModel = { url: "/images/models/french-cut-mocha-model.webp" };
 const boyShortCaramelModel = { url: "/images/models/boy-short-caramel-asian-rear-straight-ahead-v3.webp" };
@@ -12,13 +12,14 @@ interface ModelLook {
   tone: string;
   toneKey: string;
   image: string;
-  isVideo?: boolean;
+  video?: string;
+  poster?: string;
 }
 
 const MODEL_LOOKS: ModelLook[] = [
-  { shape: "Bikini", cutKey: "brazilian-bikini", tone: "Espresso", toneKey: "espresso", image: bikiniEspressoTurn.url, isVideo: true },
+  { shape: "Bikini", cutKey: "brazilian-bikini", tone: "Espresso", toneKey: "espresso", image: bikiniEspressoModel.url, video: bikiniEspressoTurn.url, poster: "/images/video-posters/bikini-espresso-turn.jpg" },
   { shape: "French Cut", cutKey: "high-rise-french-cut", tone: "Mocha", toneKey: "mocha", image: frenchCutMochaModel.url },
-  { shape: "Boy Short", cutKey: "boy-short", tone: "Caramel", toneKey: "caramel", image: boyShortCaramelModel.url },
+  { shape: "Boy Short", cutKey: "boy-short", tone: "Caramel", toneKey: "caramel", image: boyShortCaramelModel.url, video: "/videos/boy-short-caramel-turn-v3-muted.mp4", poster: "/images/video-posters/boy-short-caramel-turn-v3.jpg" },
 ];
 
 const ProductShowcase = () => {
@@ -46,12 +47,12 @@ const ProductShowcase = () => {
                 className="group block w-[240px] shrink-0 md:w-auto"
               >
                 <div className="aspect-[3/4] bg-sand/40 overflow-hidden relative">
-                  {look.isVideo ? (
-                    <LazyVideo
-                      src={look.image}
-                      poster="/images/video-posters/bikini-espresso-turn.jpg"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      ariaLabel={`hertones ${look.shape} in ${look.tone} on model`}
+                  {look.video && look.poster ? (
+                    <HoverVideo
+                      src={look.video}
+                      poster={look.poster}
+                      alt={`hertones ${look.shape} in ${look.tone} on model`}
+                      className="w-full h-full object-cover"
                     />
                   ) : (
                     <img
