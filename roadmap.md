@@ -16,3 +16,4 @@
 - [x] Foundation collection: Boy Short | Caramel hover video plays at the same turning speed as Bikini | Espresso.
 - [x] Shop by Tone: hovering a color circle previews that shade temporarily; clicking it keeps it selected.
 - [x] Foundation collection: tapping a model photo on a phone opens that product page.
+- [x] Why It Feels Different section: remove the excess white space between the heading and the Thoughtful Construction text.

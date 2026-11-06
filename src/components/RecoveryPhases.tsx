@@ -203,39 +203,39 @@ const RecoveryPhases = () => {
       }}
       id="why-it-feels-different"
       className="relative px-4 mb-24 scroll-mt-20"
-      style={{ height: isMobile ? "300vh" : "500vh" }}
+      style={{ height: isMobile ? "220vh" : "320vh" }}
     >
-      <div className="sticky top-0 h-screen flex flex-col items-start justify-start pt-4 md:pt-8">
+      <div className="sticky top-0 h-screen flex flex-col items-start justify-start md:justify-center pt-4 md:pt-8 pb-4 md:pb-8">
         <h2 className={`font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-left mb-4 ml-4 md:ml-8 bg-gradient-to-r from-accent via-espresso to-accent bg-clip-text text-transparent transition-all duration-[800ms] ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-80 translate-y-4'}`}>
           Why It Feels Different
         </h2>
-        <div className={`w-full mx-auto rounded-2xl overflow-hidden bg-card shadow-lg transition-all duration-[800ms] ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-90 translate-y-3'}`} style={{ transitionDelay: isVisible ? '100ms' : '0ms' }}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div className={`w-full mx-auto rounded-2xl overflow-hidden bg-card shadow-lg transition-all duration-[800ms] ease-out md:flex-1 md:min-h-0 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-90 translate-y-3'}`} style={{ transitionDelay: isVisible ? '100ms' : '0ms' }}>
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-0 md:h-full">
             {/* Left column — text */}
             <div
-              className="relative flex flex-col items-start justify-center p-6 md:p-12 lg:p-16 min-h-[14rem] md:min-h-[28rem] lg:min-h-[32rem] overflow-hidden"
+              className="relative flex flex-col items-start justify-start p-6 md:p-12 lg:p-16 min-h-[14rem] md:min-h-0 md:h-full overflow-hidden"
               style={{ opacity: textOpacity, transition: "opacity 0.1s ease-out" }}
             >
               {phases.map((phase, i) => (
                 <div
                   key={i}
-                  className="absolute inset-0 flex flex-col items-start justify-center p-6 md:p-12 lg:p-16 transition-all duration-500 ease-out"
+                  className="absolute inset-0 flex flex-col items-start justify-start p-6 pt-10 md:p-12 md:pt-14 lg:p-16 lg:pt-16 [@media(max-height:760px)]:p-8 [@media(max-height:760px)]:pt-8 transition-all duration-500 ease-out"
                   style={{
                     opacity: activePhase === i ? 1 : 0,
                     transform: activePhase === i ? "translateY(0)" : activePhase > i ? "translateY(-20px)" : "translateY(20px)",
                     pointerEvents: activePhase === i ? "auto" : "none",
                   }}
                 >
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4 md:mb-5">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4 md:mb-5 [@media(max-height:760px)]:mb-3">
                     <phase.icon className="h-5 w-5 md:h-6 md:w-6 text-accent" />
                   </div>
                   <p className="text-xs tracking-[0.25em] uppercase text-muted-foreground font-body mb-2 md:mb-3">
                     {phase.eyebrow}
                   </p>
-                  <h2 className="font-display text-xl md:text-3xl lg:text-5xl font-medium text-foreground leading-tight mb-3 md:mb-4">
+                  <h2 className="font-display text-xl md:text-3xl lg:text-5xl font-medium text-foreground leading-tight mb-3 md:mb-4 [@media(max-height:760px)]:text-2xl [@media(max-height:760px)]:mb-2">
                     {phase.title}
                   </h2>
-                  <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed max-w-md">
+                  <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed max-w-none [@media(max-height:760px)]:text-sm">
                     {phase.description}
                   </p>
                 </div>
@@ -245,7 +245,7 @@ const RecoveryPhases = () => {
             {/* Right column — animation */}
             <div
               ref={canvasContainerRef}
-              className="relative aspect-[5/8] md:aspect-auto md:min-h-[28rem] lg:min-h-[32rem]"
+              className="relative aspect-[5/8] md:aspect-auto md:h-full md:min-h-0"
             >
               <canvas
                 ref={canvasRef}
