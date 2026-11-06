@@ -35,9 +35,8 @@ const HoverVideo = ({ src, poster, alt, className }: HoverVideoProps) => {
       className="relative w-full h-full"
       onPointerEnter={(e) => e.pointerType === "mouse" && play()}
       onPointerLeave={(e) => e.pointerType === "mouse" && stop()}
-      onClick={(e) => {
+      onClick={() => {
         if (window.matchMedia("(hover: hover)").matches) return;
-        e.preventDefault();
         if (playing) stop();
         else play();
       }}
