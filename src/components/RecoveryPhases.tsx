@@ -219,23 +219,23 @@ const RecoveryPhases = () => {
               {phases.map((phase, i) => (
                 <div
                   key={i}
-                  className="absolute inset-0 flex flex-col items-start justify-start p-6 pt-10 md:p-12 md:pt-14 lg:p-16 lg:pt-16 transition-all duration-500 ease-out"
+                  className="absolute inset-0 flex flex-col items-start justify-start p-6 pt-10 md:p-12 md:pt-14 lg:p-16 lg:pt-16 [@media(max-height:760px)]:p-8 [@media(max-height:760px)]:pt-8 transition-all duration-500 ease-out"
                   style={{
                     opacity: activePhase === i ? 1 : 0,
                     transform: activePhase === i ? "translateY(0)" : activePhase > i ? "translateY(-20px)" : "translateY(20px)",
                     pointerEvents: activePhase === i ? "auto" : "none",
                   }}
                 >
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4 md:mb-5">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4 md:mb-5 [@media(max-height:760px)]:mb-3">
                     <phase.icon className="h-5 w-5 md:h-6 md:w-6 text-accent" />
                   </div>
                   <p className="text-xs tracking-[0.25em] uppercase text-muted-foreground font-body mb-2 md:mb-3">
                     {phase.eyebrow}
                   </p>
-                  <h2 className="font-display text-xl md:text-3xl lg:text-5xl font-medium text-foreground leading-tight mb-3 md:mb-4">
+                  <h2 className="font-display text-xl md:text-3xl lg:text-5xl font-medium text-foreground leading-tight mb-3 md:mb-4 [@media(max-height:760px)]:text-2xl [@media(max-height:760px)]:mb-2">
                     {phase.title}
                   </h2>
-                  <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed max-w-none">
+                  <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed max-w-none [@media(max-height:760px)]:text-sm">
                     {phase.description}
                   </p>
                 </div>
