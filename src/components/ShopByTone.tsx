@@ -22,6 +22,9 @@ const LOCAL_TONE_IMAGES: Record<string, string[]> = {
 const ShopByTone = () => {
   const defaultTone = tones.find((t) => t.key === "caramel") || tones[0];
   const [selectedTone, setSelectedTone] = useState(defaultTone);
+  // Hover only previews a tone; the click is what makes it stick.
+  const [hoveredTone, setHoveredTone] = useState<(typeof tones)[number] | null>(null);
+  const activeTone = hoveredTone ?? selectedTone;
   const { ref, isVisible } = useScrollReveal();
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
 
