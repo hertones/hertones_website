@@ -14,3 +14,4 @@
 - [x] Foundation collection: Boy Short | Caramel plays the v2 turn video instead of v3.
 - [x] Homepage: every static AI model photo (bikini espresso and the other static models) recolored to the same ivory backdrop.
 - [x] Foundation collection: Boy Short | Caramel hover video plays at the same turning speed as Bikini | Espresso.
+- [x] Shop by Tone: hovering a color circle previews that shade temporarily; clicking it keeps it selected.
