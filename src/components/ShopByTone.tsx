@@ -69,6 +69,8 @@ const ShopByTone = () => {
             <button
               key={tone.name}
               onClick={() => setSelectedTone(tone)}
+              onMouseEnter={() => setSelectedTone(tone)}
+              onFocus={() => setSelectedTone(tone)}
               className="group flex flex-col items-center gap-2 transition-all duration-300"
             >
               <div
