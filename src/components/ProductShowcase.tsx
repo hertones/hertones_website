@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import HoverVideo from "@/components/HoverVideo";
-const bikiniEspressoModel = { url: "/images/models/bikini-espresso-model.jpg" };
+const bikiniEspressoModel = { url: "/images/models/bikini-espresso-model.webp" };
 const boyShortCaramelModel = { url: "/images/models/boy-short-caramel-asian-rear-straight-ahead-v3.webp" };
 const bikiniEspressoTurn = { url: "/videos/bikini-espresso-turn-v4-muted.mp4" };
 import { mapToneHandle } from "@/lib/productCatalog";
@@ -18,7 +18,7 @@ interface ModelLook {
 
 const MODEL_LOOKS: ModelLook[] = [
   { shape: "Bikini", cutKey: "brazilian-bikini", tone: "Espresso", toneKey: "espresso", image: bikiniEspressoModel.url, video: bikiniEspressoTurn.url, poster: "/images/video-posters/bikini-espresso-turn.jpg" },
-  { shape: "French Cut", cutKey: "high-rise-french-cut", tone: "Mocha", toneKey: "mocha", image: "/images/models/french-cut-mocha-model-front.jpg", rearImage: "/images/models/french-cut-mocha-model-rear.jpg" },
+  { shape: "French Cut", cutKey: "high-rise-french-cut", tone: "Mocha", toneKey: "mocha", image: "/images/models/french-cut-mocha-model-front.webp", rearImage: "/images/models/french-cut-mocha-model-rear.webp" },
   { shape: "Boy Short", cutKey: "boy-short", tone: "Caramel", toneKey: "caramel", image: boyShortCaramelModel.url, video: "/videos/boy-short-caramel-turn-v2-muted.mp4", poster: "/images/video-posters/boy-short-caramel-turn-v2.jpg" },
 ];
 
