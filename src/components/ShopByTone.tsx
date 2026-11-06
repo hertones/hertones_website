@@ -22,6 +22,9 @@ const LOCAL_TONE_IMAGES: Record<string, string[]> = {
 const ShopByTone = () => {
   const defaultTone = tones.find((t) => t.key === "caramel") || tones[0];
   const [selectedTone, setSelectedTone] = useState(defaultTone);
+  // Hover only previews a tone; the click is what makes it stick.
+  const [hoveredTone, setHoveredTone] = useState<(typeof tones)[number] | null>(null);
+  const activeTone = hoveredTone ?? selectedTone;
   const { ref, isVisible } = useScrollReveal();
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
 
@@ -30,16 +33,16 @@ const ShopByTone = () => {
   }, []);
 
   // Build display cards: use local imagery where we have it, else Shopify
-  const localImages = LOCAL_TONE_IMAGES[selectedTone.key];
+  const localImages = LOCAL_TONE_IMAGES[activeTone.key];
   const cards = ACTIVE_CUTS.map((cut, i) => {
-    const handle = mapToneHandle(selectedTone.key, cut.key);
+    const handle = mapToneHandle(activeTone.key, cut.key);
     let image = "";
     if (cut.key === "brazilian-bikini") {
-      image = getBikiniImage(selectedTone.key)?.url || "";
+      image = getBikiniImage(activeTone.key)?.url || "";
     } else if (cut.key === "high-rise-french-cut") {
-      image = getFrenchCutImage(selectedTone.key)?.url || "";
+      image = getFrenchCutImage(activeTone.key)?.url || "";
     } else if (cut.key === "boy-short") {
-      image = getBoyShortImage(selectedTone.key)?.url || "";
+      image = getBoyShortImage(activeTone.key)?.url || "";
     } else if (localImages) {
       image = localImages[1] || "";
     }
@@ -64,23 +67,24 @@ const ShopByTone = () => {
           </p>
         </div>
 
-        <div className={`flex justify-center gap-4 sm:gap-6 mb-12 transition-all duration-800 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+        <div onMouseLeave={() => setHoveredTone(null)} className={`flex justify-center gap-4 sm:gap-6 mb-12 transition-all duration-800 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
           {tones.map((tone) => (
             <button
               key={tone.name}
               onClick={() => setSelectedTone(tone)}
-              onMouseEnter={() => setSelectedTone(tone)}
-              onFocus={() => setSelectedTone(tone)}
+              onMouseEnter={() => setHoveredTone(tone)}
+              onFocus={() => setHoveredTone(tone)}
+              onBlur={() => setHoveredTone(null)}
               className="group flex flex-col items-center gap-2 transition-all duration-300"
             >
               <div
                 className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 transition-all duration-300 shadow-sm hover:scale-110 ${
-                  selectedTone.name === tone.name ? 'border-accent scale-110 shadow-md' : 'border-border'
+                  activeTone.name === tone.name ? 'border-accent scale-110 shadow-md' : 'border-border'
                 }`}
                 style={{ backgroundColor: tone.color }}
               />
               <span className={`text-[10px] sm:text-xs font-body tracking-wide transition-colors ${
-                selectedTone.name === tone.name ? 'text-foreground' : 'text-muted-foreground'
+                activeTone.name === tone.name ? 'text-foreground' : 'text-muted-foreground'
               }`}>
                 {tone.name}
               </span>
@@ -94,7 +98,7 @@ const ShopByTone = () => {
             {cards.length > 0 ? (
               cards.map((card, i) => (
                 <Link
-                  key={`${selectedTone.key}-${i}`}
+                  key={`${activeTone.key}-${i}`}
                   to="/product/$handle" params={{ handle: card.handle }}
                   className="group block"
                 >
@@ -102,15 +106,15 @@ const ShopByTone = () => {
                     {card.image ? (
                       <img
                         src={card.image}
-                        alt={`${selectedTone.name} ${card.label}`}
+                        alt={`${activeTone.name} ${card.label}`}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         loading="lazy"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: selectedTone.color + '40' }}>
+                      <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: activeTone.color + '40' }}>
                         <div className="text-center px-4">
-                          <div className="w-8 h-8 rounded-full mx-auto mb-3 border border-border" style={{ backgroundColor: selectedTone.color }} />
-                          <p className="font-body text-xs text-muted-foreground">{selectedTone.name} · {card.label}</p>
+                          <div className="w-8 h-8 rounded-full mx-auto mb-3 border border-border" style={{ backgroundColor: activeTone.color }} />
+                          <p className="font-body text-xs text-muted-foreground">{activeTone.name} · {card.label}</p>
                         </div>
                       </div>
                     )}
@@ -125,11 +129,11 @@ const ShopByTone = () => {
             ) : (
               /* Fallback placeholders when no products/images */
               [1, 2, 3].map((i) => (
-                <div key={i} className="aspect-[3/4] flex items-center justify-center rounded-lg" style={{ backgroundColor: selectedTone.color + '40' }}>
+                <div key={i} className="aspect-[3/4] flex items-center justify-center rounded-lg" style={{ backgroundColor: activeTone.color + '40' }}>
                   <div className="text-center px-4">
-                    <div className="w-8 h-8 rounded-full mx-auto mb-3 border border-border" style={{ backgroundColor: selectedTone.color }} />
+                    <div className="w-8 h-8 rounded-full mx-auto mb-3 border border-border" style={{ backgroundColor: activeTone.color }} />
                     <p className="font-body text-xs text-muted-foreground">
-                      {selectedTone.name} · Style {i}
+                      {activeTone.name} · Style {i}
                     </p>
                   </div>
                 </div>
