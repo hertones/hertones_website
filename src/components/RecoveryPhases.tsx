@@ -209,11 +209,11 @@ const RecoveryPhases = () => {
         <h2 className={`font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-left mb-4 ml-4 md:ml-8 bg-gradient-to-r from-accent via-espresso to-accent bg-clip-text text-transparent transition-all duration-[800ms] ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-80 translate-y-4'}`}>
           Why It Feels Different
         </h2>
-        <div className={`w-full mx-auto rounded-2xl overflow-hidden bg-card shadow-lg transition-all duration-[800ms] ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-90 translate-y-3'}`} style={{ transitionDelay: isVisible ? '100ms' : '0ms' }}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div className={`w-full mx-auto rounded-2xl overflow-hidden bg-card shadow-lg transition-all duration-[800ms] ease-out md:flex-1 md:min-h-0 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-90 translate-y-3'}`} style={{ transitionDelay: isVisible ? '100ms' : '0ms' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:h-full">
             {/* Left column — text */}
             <div
-              className="relative flex flex-col items-start justify-center p-6 md:p-12 lg:p-16 min-h-[14rem] md:min-h-[28rem] lg:min-h-[32rem] overflow-hidden"
+              className="relative flex flex-col items-start justify-center p-6 md:p-12 lg:p-16 min-h-[14rem] md:min-h-0 md:h-full overflow-hidden"
               style={{ opacity: textOpacity, transition: "opacity 0.1s ease-out" }}
             >
               {phases.map((phase, i) => (
@@ -245,7 +245,7 @@ const RecoveryPhases = () => {
             {/* Right column — animation */}
             <div
               ref={canvasContainerRef}
-              className="relative aspect-[5/8] md:aspect-auto md:min-h-[28rem] lg:min-h-[32rem]"
+              className="relative aspect-[5/8] md:aspect-auto md:h-full md:min-h-0"
             >
               <canvas
                 ref={canvasRef}
