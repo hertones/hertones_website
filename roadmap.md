@@ -10,6 +10,6 @@
 - [x] Videos served from public/videos/
 - [x] Optimize homepage media loading, defer offscreen videos and animation frames, and compress oversized assets.
 
-- [ ] Foundation collection: Bikini | Espresso background recolored to match the pale ivory of the other two cards (still + hover video).
-- [ ] Foundation collection: Boy Short | Caramel plays the v2 turn video instead of v3.
-- [ ] Homepage: every static AI model photo (bikini espresso and the other static models) recolored to the same ivory backdrop.
+- [x] Foundation collection: Bikini | Espresso background recolored to match the pale ivory of the other two cards (still + hover video).
+- [x] Foundation collection: Boy Short | Caramel plays the v2 turn video instead of v3.
+- [x] Homepage: every static AI model photo (bikini espresso and the other static models) recolored to the same ivory backdrop.
