@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface HoverVideoProps {
   src: string;
@@ -16,8 +16,11 @@ const HoverVideo = ({ src, poster, alt, className }: HoverVideoProps) => {
   const play = () => {
     setLoaded(true);
     setPlaying(true);
-    requestAnimationFrame(() => void ref.current?.play().catch(() => undefined));
   };
+  useEffect(() => {
+    if (playing && loaded) void ref.current?.play().catch(() => undefined);
+  }, [playing, loaded]);
+
   const stop = () => {
     const v = ref.current;
     setPlaying(false);
