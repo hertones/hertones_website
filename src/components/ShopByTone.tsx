@@ -28,6 +28,16 @@ const ShopByTone = () => {
   const { ref, isVisible } = useScrollReveal();
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
 
+  // Warm the browser cache with every shade once the section is near, so swaps are instant.
+  useEffect(() => {
+    if (!isVisible) return;
+    tones.forEach((t) => {
+      [getBikiniImage(t.key)?.url, getFrenchCutImage(t.key)?.url, getBoyShortImage(t.key)?.url].forEach((src) => {
+        if (src) { const img = new Image(); img.decoding = "async"; img.src = src; }
+      });
+    });
+  }, [isVisible]);
+
   useEffect(() => {
     fetchProducts(50).then(setProducts).catch(() => {});
   }, []);
@@ -98,7 +108,7 @@ const ShopByTone = () => {
             {cards.length > 0 ? (
               cards.map((card, i) => (
                 <Link
-                  key={`${activeTone.key}-${i}`}
+                  key={card.label}
                   to="/product/$handle" params={{ handle: card.handle }}
                   className="group block"
                 >
@@ -108,7 +118,8 @@ const ShopByTone = () => {
                         src={card.image}
                         alt={`${activeTone.name} ${card.label}`}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        loading="lazy"
+                        loading="eager"
+                        decoding="async"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: activeTone.color + '40' }}>
