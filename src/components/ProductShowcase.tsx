@@ -19,7 +19,7 @@ interface ModelLook {
 const MODEL_LOOKS: ModelLook[] = [
   { shape: "Bikini", cutKey: "brazilian-bikini", tone: "Espresso", toneKey: "espresso", image: bikiniEspressoModel.url, video: bikiniEspressoTurn.url, poster: "/images/video-posters/bikini-espresso-turn.jpg" },
   { shape: "French Cut", cutKey: "high-rise-french-cut", tone: "Mocha", toneKey: "mocha", image: "/images/models/french-cut-mocha-model-front.jpg", rearImage: "/images/models/french-cut-mocha-model-rear.jpg" },
-  { shape: "Boy Short", cutKey: "boy-short", tone: "Caramel", toneKey: "caramel", image: boyShortCaramelModel.url, video: "/videos/boy-short-caramel-turn-v3-muted.mp4", poster: "/images/video-posters/boy-short-caramel-turn-v3.jpg" },
+  { shape: "Boy Short", cutKey: "boy-short", tone: "Caramel", toneKey: "caramel", image: boyShortCaramelModel.url, video: "/videos/boy-short-caramel-turn-v2-muted.mp4", poster: "/images/video-posters/boy-short-caramel-turn-v2.jpg" },
 ];
 
 const ProductShowcase = () => {
