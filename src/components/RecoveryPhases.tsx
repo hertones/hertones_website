@@ -235,7 +235,7 @@ const RecoveryPhases = () => {
                   <h2 className="font-display text-xl md:text-3xl lg:text-5xl font-medium text-foreground leading-tight mb-3 md:mb-4">
                     {phase.title}
                   </h2>
-                  <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed max-w-md">
+                  <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed max-w-none">
                     {phase.description}
                   </p>
                 </div>
