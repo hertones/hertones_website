@@ -49,20 +49,26 @@ const HeroSection = () => {
   }, [current, goTo]);
 
   const slide = slides[current];
+  const next = (current + 1) % slides.length;
+  const [shown, setShown] = useState(0);
+  useEffect(() => {
+    if (loadedSlides.has(current)) setShown(current);
+  }, [current, loadedSlides]);
 
   return (
     <section className="relative min-h-[70vh] md:min-h-[82vh] overflow-hidden">
       {/* Background images with crossfade */}
       {slides.map((s, i) => {
-        const shouldRenderImage = i === 0 || i === current;
-        const isDisplayed = i === current && loadedSlides.has(i);
-        const showFallback = i === 0 && !loadedSlides.has(current);
+        // Keep previously loaded slides mounted and preload the next one,
+        // so rotations crossfade from the last visible slide instead of slide 0.
+        const shouldRenderImage = i === 0 || i === current || i === next || loadedSlides.has(i);
+        const isDisplayed = loadedSlides.has(current) ? i === current : i === shown;
 
         return (
         <div
           key={i}
           className="absolute inset-0 transition-opacity duration-1000"
-          style={{ opacity: isDisplayed || showFallback ? 1 : 0 }}
+          style={{ opacity: isDisplayed ? 1 : 0 }}
         >
           {shouldRenderImage && (
             <img
@@ -71,7 +77,7 @@ const HeroSection = () => {
               className="w-full h-full object-cover"
               width={1920}
               height={1080}
-              loading={i === 0 ? "eager" : "lazy"}
+              loading="eager"
               decoding={i === 0 ? "sync" : "async"}
               onLoad={() => setLoadedSlides((loaded) => new Set(loaded).add(i))}
               {...(i === 0 ? { fetchpriority: "high" as const } : {})}
