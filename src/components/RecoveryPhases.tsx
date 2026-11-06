@@ -203,9 +203,9 @@ const RecoveryPhases = () => {
       }}
       id="why-it-feels-different"
       className="relative px-4 mb-24 scroll-mt-20"
-      style={{ height: isMobile ? "300vh" : "500vh" }}
+      style={{ height: isMobile ? "220vh" : "320vh" }}
     >
-      <div className="sticky top-0 h-screen flex flex-col items-start justify-start pt-4 md:pt-8">
+      <div className="sticky top-0 h-screen flex flex-col items-start justify-start md:justify-center pt-4 md:pt-8 pb-4 md:pb-8">
         <h2 className={`font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-left mb-4 ml-4 md:ml-8 bg-gradient-to-r from-accent via-espresso to-accent bg-clip-text text-transparent transition-all duration-[800ms] ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-80 translate-y-4'}`}>
           Why It Feels Different
         </h2>
