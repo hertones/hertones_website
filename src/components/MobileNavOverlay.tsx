@@ -23,8 +23,7 @@ const menuItems = [
   {
     label: "Packs",
     image: pack3,
-    href: "/",
-    scrollTo: "pack-options",
+    href: "/packs",
   },
   {
     label: "Reviews",

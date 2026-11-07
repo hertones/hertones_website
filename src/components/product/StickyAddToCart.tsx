@@ -9,6 +9,8 @@ interface StickyAddToCartProps {
   isAvailable: boolean;
   hasSizeSelected: boolean;
   triggerRef: React.RefObject<HTMLButtonElement>;
+  /** Label shown before a selection is made (defaults to "Pick a Size"). */
+  selectPrompt?: string;
 }
 
 const StickyAddToCart = ({
@@ -19,6 +21,7 @@ const StickyAddToCart = ({
   isAvailable,
   hasSizeSelected,
   triggerRef,
+  selectPrompt = "Pick a Size",
 }: StickyAddToCartProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -54,7 +57,7 @@ const StickyAddToCart = ({
           {isLoading ? (
             <Loader2 className="h-3.5 w-3.5 animate-spin" />
           ) : !hasSizeSelected ? (
-            "Pick a Size"
+            selectPrompt
           ) : (
             <>
               <ShoppingBag className="h-3.5 w-3.5" />
