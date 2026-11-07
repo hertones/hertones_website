@@ -169,8 +169,8 @@ const RecoveryPhases = () => {
 
         const rect = section.getBoundingClientRect();
         const sectionHeight = section.offsetHeight;
-        const viewportHeight = window.innerHeight;
-        const scrollable = sectionHeight - viewportHeight;
+        const stickyHeight = (section.firstElementChild as HTMLElement | null)?.offsetHeight ?? window.innerHeight;
+        const scrollable = sectionHeight - stickyHeight;
         if (scrollable <= 0) return;
 
         const progress = Math.min(1, Math.max(0, -rect.top / scrollable));
