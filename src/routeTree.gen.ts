@@ -14,10 +14,12 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CollectionsRouteImport } from './routes/collections'
 import { Route as LandingRouteImport } from './routes/landing'
+import { Route as PacksRouteImport } from './routes/packs'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ShippingReturnsRouteImport } from './routes/shipping-returns'
 import { Route as ShopByShapesRouteImport } from './routes/shop-by-shapes'
 import { Route as TermsOfServiceRouteImport } from './routes/terms-of-service'
+import { Route as PackHandleRouteImport } from './routes/pack.$handle'
 import { Route as ProductHandleRouteImport } from './routes/product.$handle'
 import { Route as ProductSlipDressRouteImport } from './routes/product.slip-dress'
 import { Route as AuthenticatedAdminSubscribersRouteImport } from './routes/_authenticated/admin.subscribers'
@@ -46,6 +48,11 @@ const LandingRoute = LandingRouteImport.update({
   path: '/landing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PacksRoute = PacksRouteImport.update({
+  id: '/packs',
+  path: '/packs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
   path: '/privacy-policy',
@@ -64,6 +71,11 @@ const ShopByShapesRoute = ShopByShapesRouteImport.update({
 const TermsOfServiceRoute = TermsOfServiceRouteImport.update({
   id: '/terms-of-service',
   path: '/terms-of-service',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PackHandleRoute = PackHandleRouteImport.update({
+  id: '/pack/$handle',
+  path: '/pack/$handle',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductHandleRoute = ProductHandleRouteImport.update({
@@ -88,10 +100,12 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/collections': typeof CollectionsRoute
   '/landing': typeof LandingRoute
+  '/packs': typeof PacksRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/shipping-returns': typeof ShippingReturnsRoute
   '/shop-by-shapes': typeof ShopByShapesRoute
   '/terms-of-service': typeof TermsOfServiceRoute
+  '/pack/$handle': typeof PackHandleRoute
   '/product/$handle': typeof ProductHandleRoute
   '/product/slip-dress': typeof ProductSlipDressRoute
   '/admin/subscribers': typeof AuthenticatedAdminSubscribersRoute
@@ -101,10 +115,12 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/collections': typeof CollectionsRoute
   '/landing': typeof LandingRoute
+  '/packs': typeof PacksRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/shipping-returns': typeof ShippingReturnsRoute
   '/shop-by-shapes': typeof ShopByShapesRoute
   '/terms-of-service': typeof TermsOfServiceRoute
+  '/pack/$handle': typeof PackHandleRoute
   '/product/$handle': typeof ProductHandleRoute
   '/product/slip-dress': typeof ProductSlipDressRoute
   '/admin/subscribers': typeof AuthenticatedAdminSubscribersRoute
@@ -116,10 +132,12 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/collections': typeof CollectionsRoute
   '/landing': typeof LandingRoute
+  '/packs': typeof PacksRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/shipping-returns': typeof ShippingReturnsRoute
   '/shop-by-shapes': typeof ShopByShapesRoute
   '/terms-of-service': typeof TermsOfServiceRoute
+  '/pack/$handle': typeof PackHandleRoute
   '/product/$handle': typeof ProductHandleRoute
   '/product/slip-dress': typeof ProductSlipDressRoute
   '/_authenticated/admin/subscribers': typeof AuthenticatedAdminSubscribersRoute
@@ -131,10 +149,12 @@ export interface FileRouteTypes {
     | '/auth'
     | '/collections'
     | '/landing'
+    | '/packs'
     | '/privacy-policy'
     | '/shipping-returns'
     | '/shop-by-shapes'
     | '/terms-of-service'
+    | '/pack/$handle'
     | '/product/$handle'
     | '/product/slip-dress'
     | '/admin/subscribers'
@@ -144,10 +164,12 @@ export interface FileRouteTypes {
     | '/auth'
     | '/collections'
     | '/landing'
+    | '/packs'
     | '/privacy-policy'
     | '/shipping-returns'
     | '/shop-by-shapes'
     | '/terms-of-service'
+    | '/pack/$handle'
     | '/product/$handle'
     | '/product/slip-dress'
     | '/admin/subscribers'
@@ -158,10 +180,12 @@ export interface FileRouteTypes {
     | '/auth'
     | '/collections'
     | '/landing'
+    | '/packs'
     | '/privacy-policy'
     | '/shipping-returns'
     | '/shop-by-shapes'
     | '/terms-of-service'
+    | '/pack/$handle'
     | '/product/$handle'
     | '/product/slip-dress'
     | '/_authenticated/admin/subscribers'
@@ -173,10 +197,12 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   CollectionsRoute: typeof CollectionsRoute
   LandingRoute: typeof LandingRoute
+  PacksRoute: typeof PacksRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ShippingReturnsRoute: typeof ShippingReturnsRoute
   ShopByShapesRoute: typeof ShopByShapesRoute
   TermsOfServiceRoute: typeof TermsOfServiceRoute
+  PackHandleRoute: typeof PackHandleRoute
   ProductHandleRoute: typeof ProductHandleRoute
   ProductSlipDressRoute: typeof ProductSlipDressRoute
 }
@@ -218,6 +244,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LandingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/packs': {
+      id: '/packs'
+      path: '/packs'
+      fullPath: '/packs'
+      preLoaderRoute: typeof PacksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy-policy': {
       id: '/privacy-policy'
       path: '/privacy-policy'
@@ -244,6 +277,13 @@ declare module '@tanstack/react-router' {
       path: '/terms-of-service'
       fullPath: '/terms-of-service'
       preLoaderRoute: typeof TermsOfServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pack/$handle': {
+      id: '/pack/$handle'
+      path: '/pack/$handle'
+      fullPath: '/pack/$handle'
+      preLoaderRoute: typeof PackHandleRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/product/$handle': {
@@ -287,10 +327,12 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   CollectionsRoute: CollectionsRoute,
   LandingRoute: LandingRoute,
+  PacksRoute: PacksRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   ShippingReturnsRoute: ShippingReturnsRoute,
   ShopByShapesRoute: ShopByShapesRoute,
   TermsOfServiceRoute: TermsOfServiceRoute,
+  PackHandleRoute: PackHandleRoute,
   ProductHandleRoute: ProductHandleRoute,
   ProductSlipDressRoute: ProductSlipDressRoute,
 }

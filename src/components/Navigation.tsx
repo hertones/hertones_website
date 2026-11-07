@@ -76,12 +76,12 @@ const Navigation = () => {
             )}
           </div>
 
-          <button
-            onClick={() => handleAnchor("pack-options")}
+          <Link
+            to="/packs"
             className="text-sm font-body tracking-wide text-foreground/70 hover:text-foreground transition-colors"
           >
             Packs
-          </button>
+          </Link>
 
           {otherLinks.map((link) => (
             <button
