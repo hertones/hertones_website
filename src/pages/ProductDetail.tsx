@@ -317,7 +317,7 @@ const ProductDetail = () => {
                 </button>
               );
             })()}
-            <div className="mt-3 flex justify-center"><SizeChartDialog /></div>
+            <div className="mt-3 flex justify-start"><SizeChartDialog /></div>
 
             {/* Trust badges */}
             <div className="grid grid-cols-3 gap-3 mt-6 pt-6 border-t border-border">
