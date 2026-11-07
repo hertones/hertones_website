@@ -19,6 +19,7 @@ async def check():
             await page.goto('http://localhost:8080/shop-by-shapes?cut=brazilian-bikini')
             await page.evaluate("localStorage.setItem('hertones_signup_popup_v2', Date.now().toString()); localStorage.setItem('hertones_popup_submitted_at', Date.now().toString())")
             await page.reload()
+            await page.wait_for_timeout(1500)
             for name, target in DESTINATIONS.items():
                 if width < 768:
                     await page.locator('nav button').first.click()
