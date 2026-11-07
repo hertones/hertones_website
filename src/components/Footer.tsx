@@ -14,17 +14,16 @@ const Footer = () => (
           <h4 className="font-body text-xs tracking-[0.2em] uppercase text-foreground mb-4">Shop</h4>
           <ul className="space-y-2.5">
             <li><Link to="/collections" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">Shop All</Link></li>
-            <li><Link to="/shop-by-shapes" search={ { cut: "brazilian-bikini" } } className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">Bikini</Link></li>
-            <li><Link to="/shop-by-shapes" search={ { cut: "high-rise-french-cut" } } className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">French Cut</Link></li>
-            <li><Link to="/shop-by-shapes" search={ { cut: "boy-short" } } className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">Boy Short</Link></li>
+            <li><Link to="/shop-by-shapes" search={{ cut: undefined }} className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">Shop by Cut</Link></li>
+            <li><a href="/#shop-by-tone" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">Shop by Tones</a></li>
             <li><Link to="/product/slip-dress" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">Slip Dress</Link></li>
-            <li><a href="/#why-it-feels-different" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">Why It Feels Different</a></li>
-            <li><a href="/#faq" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">FAQ</a></li>
           </ul>
         </div>
         <div>
           <h4 className="font-body text-xs tracking-[0.2em] uppercase text-foreground mb-4">Support</h4>
           <ul className="space-y-2.5">
+            <li><a href="/#why-it-feels-different" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">Why It Feels Different</a></li>
+            <li><a href="/#faq" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">FAQ</a></li>
             <li><Link to="/shipping-returns" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">Shipping & Returns</Link></li>
             <li><Link to="/privacy-policy" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">Privacy Policy</Link></li>
             <li><Link to="/terms-of-service" className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors">Terms of Service</Link></li>
