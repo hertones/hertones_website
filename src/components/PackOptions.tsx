@@ -20,7 +20,7 @@ const packs: { name: string; badge: string; description: string; tagline?: strin
   {
     name: "12-Pack",
     badge: "Best Value",
-    description: "12 Pack The Soft Standard",
+    description: "12 Pack The Full Kit",
     tagline: "Twelve pairs. Every shade you reach for.",
     price: "$168",
     image: packAllImg,
