@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { X, ChevronRight } from "lucide-react";
 const hero1 = "/images/hero-1.jpg";
 const hero2 = "/images/hero-2.jpg";
@@ -156,15 +156,16 @@ const MobileNavOverlay = ({ open, onClose }: MobileNavOverlayProps) => {
                 {/* Sub-items */}
                 <div
                   className={`overflow-hidden transition-all duration-300 ease-out ${
-                    shopExpanded ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+                    shopExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >
                   <div className="pl-13 pb-2 space-y-3 pr-2">
                     <button onClick={() => goTo("/collections")} className="block w-full text-left whitespace-normal break-words text-base font-body text-primary-foreground/60 hover:text-primary-foreground transition-colors">Shop All</button>
-                    <button onClick={() => goTo("/shop-by-shapes?cut=brazilian-bikini")} className="block w-full text-left whitespace-normal break-words text-base font-body text-primary-foreground/60 hover:text-primary-foreground transition-colors">Bikini</button>
-                    <button onClick={() => goTo("/shop-by-shapes?cut=high-rise-french-cut")} className="block w-full text-left whitespace-normal break-words text-base font-body text-primary-foreground/60 hover:text-primary-foreground transition-colors">French Cut</button>
-                    <button onClick={() => goTo("/shop-by-shapes?cut=boy-short")} className="block w-full text-left whitespace-normal break-words text-base font-body text-primary-foreground/60 hover:text-primary-foreground transition-colors">Boy Short</button>
-                    <button onClick={() => goTo("/product/slip-dress")} className="block w-full text-left whitespace-normal break-words text-base font-body text-primary-foreground/60 hover:text-primary-foreground transition-colors">Slip Dress</button>
+                    <Link to="/shop-by-shapes" search={{ cut: undefined }} onClick={handleClose} className="block w-full text-left whitespace-normal break-words text-base font-body text-primary-foreground/60 hover:text-primary-foreground transition-colors">Shop by Cut</Link>
+                    <Link to="/product/$handle" params={{ handle: "espresso-brazilian-bikini" }} onClick={handleClose} className="block w-full text-left whitespace-normal break-words text-base font-body text-primary-foreground/60 hover:text-primary-foreground transition-colors">Bikini</Link>
+                    <Link to="/product/$handle" params={{ handle: "mocha-high-waisted" }} onClick={handleClose} className="block w-full text-left whitespace-normal break-words text-base font-body text-primary-foreground/60 hover:text-primary-foreground transition-colors">French Cut</Link>
+                    <Link to="/product/$handle" params={{ handle: "caramel-boy-short" }} onClick={handleClose} className="block w-full text-left whitespace-normal break-words text-base font-body text-primary-foreground/60 hover:text-primary-foreground transition-colors">Boy Short</Link>
+                    <Link to="/product/slip-dress" onClick={handleClose} className="block w-full text-left whitespace-normal break-words text-base font-body text-primary-foreground/60 hover:text-primary-foreground transition-colors">Slip Dress</Link>
                     <button onClick={handleTones} className="block w-full text-left whitespace-normal break-words text-base font-body text-primary-foreground/60 hover:text-primary-foreground transition-colors">Shop by Tones</button>
                   </div>
                 </div>

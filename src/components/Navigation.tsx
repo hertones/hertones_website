@@ -3,7 +3,6 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { Menu, ChevronDown } from "lucide-react";
 import CartDrawer from "./CartDrawer";
 import MobileNavOverlay from "./MobileNavOverlay";
-import { ACTIVE_CUTS } from "@/lib/productCatalog";
 import { scrollToSection } from "@/lib/scrollToSection";
 
 const Navigation = () => {
@@ -70,12 +69,17 @@ const Navigation = () => {
             {shopOpen && (
               <div className="absolute top-full left-0 mt-2 bg-white rounded-xl shadow-lg border border-border py-2 min-w-[200px] z-50">
                 <button onClick={() => goTo("/collections")} className="w-full text-left whitespace-nowrap px-4 py-2.5 text-sm font-body text-foreground/80 hover:bg-oat hover:text-foreground transition-colors">Shop All</button>
-                {ACTIVE_CUTS.map((cut) => (
-                  <button key={cut.key} onClick={() => goTo(`/shop-by-shapes?cut=${cut.key}`)} className="w-full text-left whitespace-nowrap px-4 py-2.5 text-sm font-body text-foreground/80 hover:bg-oat hover:text-foreground transition-colors">
+                <Link to="/shop-by-shapes" search={{ cut: undefined }} onClick={() => setShopOpen(false)} className="block w-full text-left whitespace-nowrap px-4 py-2.5 text-sm font-body text-foreground/80 hover:bg-oat hover:text-foreground transition-colors">Shop by Cut</Link>
+                {[
+                  { name: "Bikini", handle: "espresso-brazilian-bikini" },
+                  { name: "French Cut", handle: "mocha-high-waisted" },
+                  { name: "Boy Short", handle: "caramel-boy-short" },
+                ].map((cut) => (
+                  <Link key={cut.handle} to="/product/$handle" params={{ handle: cut.handle }} onClick={() => setShopOpen(false)} className="block w-full text-left whitespace-nowrap px-4 py-2.5 text-sm font-body text-foreground/80 hover:bg-oat hover:text-foreground transition-colors">
                     {cut.name}
-                  </button>
+                  </Link>
                 ))}
-                <button onClick={() => goTo("/product/slip-dress")} className="w-full text-left whitespace-nowrap px-4 py-2.5 text-sm font-body text-foreground/80 hover:bg-oat hover:text-foreground transition-colors">Slip Dress</button>
+                <Link to="/product/slip-dress" onClick={() => setShopOpen(false)} className="block w-full text-left whitespace-nowrap px-4 py-2.5 text-sm font-body text-foreground/80 hover:bg-oat hover:text-foreground transition-colors">Slip Dress</Link>
                 <button onClick={() => handleAnchor("shop-by-tone")} className="w-full text-left whitespace-nowrap px-4 py-2.5 text-sm font-body text-foreground/80 hover:bg-oat hover:text-foreground transition-colors">Shop by Tones</button>
               </div>
             )}
