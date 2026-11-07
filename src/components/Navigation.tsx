@@ -70,8 +70,8 @@ const Navigation = () => {
               <div className="absolute top-full left-0 mt-2 bg-white rounded-xl shadow-lg border border-border py-2 min-w-[200px] z-50">
                 <button onClick={() => goTo("/collections")} className="w-full text-left whitespace-nowrap px-4 py-2.5 text-sm font-body text-foreground/80 hover:bg-oat hover:text-foreground transition-colors">Shop All</button>
                 <Link to="/shop-by-shapes" search={{ cut: undefined }} onClick={() => setShopOpen(false)} className="block w-full text-left whitespace-nowrap px-4 py-2.5 text-sm font-body text-foreground/80 hover:bg-oat hover:text-foreground transition-colors">Shop by Cut</Link>
-                <Link to="/product/slip-dress" onClick={() => setShopOpen(false)} className="block w-full text-left whitespace-nowrap px-4 py-2.5 text-sm font-body text-foreground/80 hover:bg-oat hover:text-foreground transition-colors">Slip Dress</Link>
                 <button onClick={() => handleAnchor("shop-by-tone")} className="w-full text-left whitespace-nowrap px-4 py-2.5 text-sm font-body text-foreground/80 hover:bg-oat hover:text-foreground transition-colors">Shop by Tones</button>
+                <Link to="/product/slip-dress" onClick={() => setShopOpen(false)} className="block w-full text-left whitespace-nowrap px-4 py-2.5 text-sm font-body text-foreground/80 hover:bg-oat hover:text-foreground transition-colors">Slip Dress</Link>
               </div>
             )}
           </div>
