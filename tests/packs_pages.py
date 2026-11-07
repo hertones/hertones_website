@@ -31,13 +31,13 @@ async def check():
 
             # All three packs render with name, badge, title, price, CTA.
             for name, badge, title, price, handle in PACKS:
-                card = page.get_by_role('link', name=lambda n, t=title: n and t in n).first
+                card = page.locator('a', has_text=title).first
                 text = await card.inner_text()
                 for expected in (name, badge.upper(), title.upper(), price, 'CHOOSE YOUR CUT'):
                     assert expected in text.upper(), (width, name, expected, text)
 
             # Card click navigates to the pack product page.
-            await page.get_by_role('link', name=lambda n: n and '3 Pack Cotton Essentials' in n).first.click()
+            await page.locator('a', has_text='3 Pack Cotton Essentials').first.click()
             await page.wait_for_url('http://localhost:8080/pack/3-pack')
             await page.wait_for_timeout(800)
 
@@ -56,7 +56,7 @@ async def check():
             # Selecting a cut enables pre-order and swaps the gallery image.
             await radios.nth(1).click()  # French Cut
             assert await radios.nth(1).get_attribute('aria-checked') == 'true', (width, 'french cut selected')
-            cta = page.get_by_role('button', name=lambda n: n and 'Pre-Order Now' in n).last
+            cta = page.locator('button', has_text='Pre-Order Now').last
             assert await cta.is_enabled(), (width, 'cta should enable after cut')
             await page.wait_for_timeout(400)
             gallery_src = await page.locator('section img').first.get_attribute('src')
