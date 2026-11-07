@@ -1,4 +1,5 @@
 import { ACTIVE_TONES, getTone, type ActiveTone } from "@/lib/productCatalog";
+import SizeChartDialog from "./SizeChartDialog";
 
 const SIZES = ["XS", "S", "M", "L", "XL", "2X"] as const;
 
@@ -59,9 +60,12 @@ const ProductOptions = ({
 
       {/* Size — horizontal button row */}
       <div>
-        <p className="font-body text-[11px] tracking-[0.2em] uppercase text-muted-foreground mb-3">
-          Size
-        </p>
+        <div className="flex items-center justify-between mb-3">
+          <p className="font-body text-[11px] tracking-[0.2em] uppercase text-muted-foreground">
+            Size
+          </p>
+          <SizeChartDialog />
+        </div>
         <div className="flex gap-2">
           {SIZES.map((size) => (
             <button
