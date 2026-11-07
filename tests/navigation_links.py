@@ -5,9 +5,6 @@ from playwright.async_api import async_playwright
 
 DESTINATIONS = {
     'Shop by Cut': '/shop-by-shapes',
-    'Bikini': '/product/espresso-brazilian-bikini',
-    'French Cut': '/product/mocha-high-waisted',
-    'Boy Short': '/product/caramel-boy-short',
     'Slip Dress': '/product/slip-dress',
 }
 
@@ -24,13 +21,12 @@ async def check():
                 if width < 768:
                     await page.locator('nav button').filter(has=page.locator('svg.lucide-menu')).click()
                     menu = page.get_by_role('dialog', name='Navigation menu')
-                    await page.wait_for_timeout(500)
-                    await page.screenshot(path='/tmp/browser/dropdown/mobile-debug.png')
-                    print(await page.locator('body').inner_text(), flush=True)
-                    await menu.get_by_role('button', name='Shop', exact=True).click()
+                    await menu.locator('button', has_text='Shop').first.click()
                 else:
                     await page.get_by_role('button', name='Shop', exact=True).click()
                     menu = page.locator('nav')
+                for removed in ['Bikini', 'French Cut', 'Boy Short']:
+                    assert await menu.get_by_role('link', name=removed, exact=True).count() == 0, (width, removed)
                 link = menu.get_by_role('link', name=name, exact=True)
                 await link.wait_for(state='visible')
                 assert await link.get_attribute('href') == target, (width, name)
