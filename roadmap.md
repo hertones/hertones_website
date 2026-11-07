@@ -1,5 +1,7 @@
 # Roadmap
 
+- [ ] Dropdown: add Shop by Cut and send Bikini, French Cut, Boy Short, and Slip Dress to their individual pages on every screen.
+
 - [x] All Shapes Pack: use the mobile image-above-text layout on desktop and tablet too.
 
 - [x] Show exact existing on-site model photos for matching cut and color on Shop by Cut.
