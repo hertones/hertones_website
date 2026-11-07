@@ -9,7 +9,7 @@ const SizeChartDialog = () => {
 
   return (
     <Dialog>
-      <DialogTrigger className="inline-flex items-center gap-1.5 font-body text-xs text-foreground underline underline-offset-4 hover:text-espresso">
+      <DialogTrigger className="inline-flex items-center gap-1.5 font-body text-xs text-accent underline underline-offset-4 hover:text-accent/80 transition-colors">
         <Ruler className="h-3.5 w-3.5" />
         Size chart
       </DialogTrigger>
