@@ -31,13 +31,13 @@ async def check():
 
             # All three packs render with name, badge, title, price, CTA.
             for name, badge, title, price, handle in PACKS:
-                card = page.locator('a', has_text=title).first
+                card = page.locator('a', has_text=title).nth(0 if width < 768 else 1)
                 text = await card.inner_text()
                 for expected in (name, badge.upper(), title.upper(), price, 'CHOOSE YOUR CUT'):
                     assert expected.upper() in text.upper(), (width, name, expected, text)
 
             # Card click navigates to the pack product page.
-            await page.locator('a', has_text='3 Pack Cotton Essentials').first.click()
+            await page.locator('a', has_text='3 Pack Cotton Essentials').nth(0 if width < 768 else 1).click()
             await page.wait_for_url('http://localhost:8080/pack/3-pack')
             await page.wait_for_timeout(800)
 
