@@ -18,9 +18,9 @@ const packs = [
     image: pack6Img,
   },
   {
-    name: "All Tones",
+    name: "12-Pack",
     badge: "Best Value",
-    description: "Full Spectrum Pack",
+    description: "12 Pack Full Spectrum",
     price: "$168",
     image: packAllImg,
   },
