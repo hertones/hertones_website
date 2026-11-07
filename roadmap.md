@@ -1,6 +1,7 @@
 # Roadmap
 
-- [ ] Product pages: add an Intimissimi-style size chart popup (photo, waist/hip table, cm/in switch).
+- [x] Product pages: add an Intimissimi-style size chart popup (photo, waist/hip table, cm/in switch).
+- [ ] Confirm Hertones waist/hip measurements, including XS and slip dress sizing; awaiting the user's measurements.
 
 - [x] Dropdown: keep Shop All, Shop by Cut, Slip Dress, and Shop by Tones; remove Bikini, French Cut, and Boy Short on every screen.
 

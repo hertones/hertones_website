@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Ruler } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { SIZE_CHART, formatRange, type SizeUnit } from "@/lib/sizeChart";
 
@@ -44,7 +45,8 @@ const SizeChartDialog = () => {
             <div className="mt-8 flex items-center gap-3 font-body text-sm">
               <span className="text-foreground/80">Measurements:</span>
               {(["cm", "in"] as const).map((u) => (
-                <button
+                <Button
+                  variant="outline"
                   key={u}
                   onClick={() => setUnit(u)}
                   aria-pressed={unit === u}
@@ -53,9 +55,10 @@ const SizeChartDialog = () => {
                   }`}
                 >
                   {u}
-                </button>
+                </Button>
               ))}
             </div>
+            <p className="mt-4 font-body text-xs text-muted-foreground">Reference measurements; Hertones sizing confirmation pending.</p>
           </div>
         </div>
       </DialogContent>
