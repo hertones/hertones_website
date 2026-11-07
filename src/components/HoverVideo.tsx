@@ -86,7 +86,7 @@ const HoverVideo = ({ src, poster, alt, className }: HoverVideoProps) => {
         decoding="async"
         width={928}
         height={1152}
-        className={`${className} absolute inset-0 transition-opacity duration-300 ${playing ? "opacity-0" : "opacity-100"}`}
+        className={`${className} absolute inset-0 ${playing ? "opacity-0" : "opacity-100"}`}
       />
     </div>
   );
