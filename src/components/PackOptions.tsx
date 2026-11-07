@@ -2,7 +2,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 const pack3Img = "/images/pack-3.jpg";
 const pack6Img = "/images/pack-6.webp";
 const packAllImg = "/images/pack-all3.webp";
-const packs: { name: string; badge: string; description: string; tagline?: string; price: string; image: string }[] = [
+const packs = [
   {
     name: "3-Pack",
     badge: "17% Off",
@@ -21,7 +21,6 @@ const packs: { name: string; badge: string; description: string; tagline?: strin
     name: "12-Pack",
     badge: "Best Value",
     description: "12 Pack The Full Kit",
-    tagline: "Twelve pairs. Every shade you reach for.",
     price: "$168",
     image: packAllImg,
   },
@@ -61,8 +60,8 @@ const PackOptions = () => {
                     height={800}
                   />
                 </div>
-                <div className="px-5 pt-4 pb-3 flex flex-col flex-1">
-                  <div className="flex items-center justify-between mb-2">
+                <div className="px-5 pt-4 pb-3">
+                  <div className="flex items-center justify-between mb-3">
                     <p className="font-body text-xs uppercase tracking-[0.1em] text-foreground font-medium">
                       {pack.description}
                     </p>
@@ -70,12 +69,7 @@ const PackOptions = () => {
                       {pack.price}
                     </p>
                   </div>
-                  {pack.tagline ? (
-                    <p className="font-body text-[11px] text-muted-foreground leading-snug mb-3">
-                      {pack.tagline}
-                    </p>
-                  ) : null}
-                  <button className="w-full h-11 bg-accent/20 text-accent font-body text-sm tracking-wide rounded-sm hover:bg-accent/30 transition-colors font-medium mt-auto">
+                  <button className="w-full h-11 bg-accent/20 text-accent font-body text-sm tracking-wide rounded-sm hover:bg-accent/30 transition-colors font-medium">
                     Pre-Order
                   </button>
                 </div>
@@ -111,8 +105,8 @@ const PackOptions = () => {
                   height={800}
                 />
               </div>
-              <div className="px-5 pt-4 pb-3 flex flex-col flex-1">
-                <div className="flex items-center justify-between mb-2">
+              <div className="px-5 pt-4 pb-3">
+                <div className="flex items-center justify-between mb-3">
                   <p className="font-body text-xs uppercase tracking-[0.1em] text-foreground font-medium">
                     {pack.description}
                   </p>
@@ -120,12 +114,7 @@ const PackOptions = () => {
                     {pack.price}
                   </p>
                 </div>
-                {pack.tagline ? (
-                  <p className="font-body text-[11px] text-muted-foreground leading-snug mb-3">
-                    {pack.tagline}
-                  </p>
-                ) : null}
-                <button className="w-full h-11 bg-accent/20 text-accent font-body text-sm tracking-wide rounded-sm hover:bg-accent/30 transition-colors font-medium mt-auto">
+                <button className="w-full h-11 bg-accent/20 text-accent font-body text-sm tracking-wide rounded-sm hover:bg-accent/30 transition-colors font-medium">
                   Pre-Order
                 </button>
               </div>
