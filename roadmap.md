@@ -1,5 +1,7 @@
 # Roadmap
 
+- [x] All Shapes Pack: use the mobile image-above-text layout on desktop and tablet too.
+
 - [x] Show exact existing on-site model photos for matching cut and color on Shop by Cut.
 - [x] Keep underwear-only photos where no matching on-site model exists.
 - [x] Verify Shop by Cut on mobile and desktop.
