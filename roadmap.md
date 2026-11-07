@@ -1,5 +1,7 @@
 # Roadmap
 
+- [x] Dropdown: keep Shop All, Shop by Cut, Slip Dress, and Shop by Tones; remove Bikini, French Cut, and Boy Short on every screen.
+
 - [x] All Shapes Pack: use the mobile image-above-text layout on desktop and tablet too.
 
 - [x] Show exact existing on-site model photos for matching cut and color on Shop by Cut.
