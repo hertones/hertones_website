@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import FAQSection from "@/components/FAQSection";
 import ProductImageCarousel from "@/components/product/ProductImageCarousel";
 import ProductOptions from "@/components/product/ProductOptions";
+import SizeChartDialog from "@/components/product/SizeChartDialog";
 import ProductAccordion from "@/components/product/ProductAccordion";
 // ScienceAbsorption is intentionally NOT imported. It has been removed from the
 // active product page for the V2 Cotton launch and is preserved at
@@ -316,6 +317,7 @@ const ProductDetail = () => {
                 </button>
               );
             })()}
+            <div className="mt-3 flex justify-center"><SizeChartDialog /></div>
 
             {/* Trust badges */}
             <div className="grid grid-cols-3 gap-3 mt-6 pt-6 border-t border-border">

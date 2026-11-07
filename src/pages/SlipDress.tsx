@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import FAQSection from "@/components/FAQSection";
 import ProductImageCarousel from "@/components/product/ProductImageCarousel";
 import ProductOptions from "@/components/product/ProductOptions";
+import SizeChartDialog from "@/components/product/SizeChartDialog";
 import ProductAccordion from "@/components/product/ProductAccordion";
 import FeaturedProducts from "@/components/product/FeaturedProducts";
 import { ChevronLeft, Heart, Layers, Sparkles, ShoppingBag, Loader2 } from "lucide-react";
@@ -128,6 +129,7 @@ const SlipDress = () => {
                 </>
               )}
             </button>
+            <div className="mt-3 flex justify-center"><SizeChartDialog /></div>
 
             <div className="grid grid-cols-3 gap-3 mt-6 pt-6 border-t border-border">
               <div className="text-center">
