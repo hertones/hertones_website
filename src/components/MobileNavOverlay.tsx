@@ -162,8 +162,8 @@ const MobileNavOverlay = ({ open, onClose }: MobileNavOverlayProps) => {
                   <div className="pl-13 pb-2 space-y-3 pr-2">
                     <button onClick={() => goTo("/collections")} className="block w-full text-left whitespace-normal break-words text-base font-body text-primary-foreground/60 hover:text-primary-foreground transition-colors">Shop All</button>
                     <Link to="/shop-by-shapes" search={{ cut: undefined }} onClick={handleClose} className="block w-full text-left whitespace-normal break-words text-base font-body text-primary-foreground/60 hover:text-primary-foreground transition-colors">Shop by Cut</Link>
-                    <Link to="/product/slip-dress" onClick={handleClose} className="block w-full text-left whitespace-normal break-words text-base font-body text-primary-foreground/60 hover:text-primary-foreground transition-colors">Slip Dress</Link>
                     <button onClick={handleTones} className="block w-full text-left whitespace-normal break-words text-base font-body text-primary-foreground/60 hover:text-primary-foreground transition-colors">Shop by Tones</button>
+                    <Link to="/product/slip-dress" onClick={handleClose} className="block w-full text-left whitespace-normal break-words text-base font-body text-primary-foreground/60 hover:text-primary-foreground transition-colors">Slip Dress</Link>
                   </div>
                 </div>
               </div>
