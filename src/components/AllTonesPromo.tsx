@@ -5,7 +5,7 @@ const AllTonesPromo = () => {
 
   return (
     <section ref={ref} className="pt-4 pb-16 md:py-16 px-3 md:px-6 bg-ivory">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl lg:max-w-3xl mx-auto">
         <div
           className={`rounded-xl border border-border overflow-hidden bg-sand/20 transition-all duration-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
         >
@@ -35,7 +35,7 @@ const AllTonesPromo = () => {
                 href="https://hertones.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-full h-11 bg-accent text-ivory font-body text-sm tracking-wide rounded-sm hover:bg-accent/90 transition-colors font-medium"
+                className="inline-flex items-center justify-center w-full lg:max-w-sm h-11 bg-accent text-ivory font-body text-sm tracking-wide rounded-sm hover:bg-accent/90 transition-colors font-medium"
               >
                 Shop the All Shapes Pack
               </a>
