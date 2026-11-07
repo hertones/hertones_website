@@ -20,7 +20,7 @@ const packs = [
   {
     name: "12-Pack",
     badge: "Best Value",
-    description: "12 Pack Every Tone Set",
+    description: "12 Pack All Tones",
     price: "$168",
     image: packAllImg,
   },
