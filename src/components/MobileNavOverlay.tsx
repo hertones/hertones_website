@@ -94,8 +94,13 @@ const MobileNavOverlay = ({ open, onClose }: MobileNavOverlayProps) => {
   if (!visible && !open) return null;
 
   return (
-    <div
-      className={`fixed inset-0 z-[100] flex flex-col ${
+    <div className="fixed inset-0 z-[100]">
+      <div className="absolute inset-0 bg-foreground/30" onClick={handleClose} aria-hidden="true" />
+      <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation menu"
+      className={`relative h-full w-1/3 min-w-[240px] max-w-[85vw] overflow-y-auto flex flex-col bg-espresso ${
         closing ? "animate-slide-out-left" : "animate-slide-in-left"
       }`}
     >
@@ -103,21 +108,22 @@ const MobileNavOverlay = ({ open, onClose }: MobileNavOverlayProps) => {
       <div className="absolute inset-0 bg-espresso" />
 
       {/* Header */}
-      <div className="relative z-10 flex items-center justify-between px-6 pt-5 h-16">
+      <div className="relative z-10 flex shrink-0 items-center justify-between px-3 pt-5 h-16">
         <button
           onClick={handleClose}
+          aria-label="Close menu"
           className="p-2 text-primary-foreground/90 hover:text-primary-foreground transition-colors"
         >
           <X className="h-5 w-5" />
         </button>
-        <span className="absolute left-1/2 -translate-x-1/2 font-display text-2xl font-semibold tracking-tight text-primary-foreground">
+        <span className="font-display text-2xl font-semibold tracking-tight text-primary-foreground">
           hertones
         </span>
         <div className="w-9" /> {/* Spacer for balance */}
       </div>
 
       {/* Menu Items */}
-      <div className="relative z-10 flex flex-col gap-1 px-6 mt-8">
+      <div className="relative z-10 flex flex-col gap-1 px-4 mt-6">
         {menuItems.map((item, index) => (
           <div
             key={item.label}
@@ -128,16 +134,16 @@ const MobileNavOverlay = ({ open, onClose }: MobileNavOverlayProps) => {
               <div>
                 <button
                   onClick={() => setShopExpanded(!shopExpanded)}
-                  className="flex items-center gap-4 w-full py-3 group"
+                  className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 w-full py-3 group text-left"
                 >
-                  <div className="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0">
+                  <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0">
                     <img
                       src={item.image}
                       alt={item.label}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
-                  <span className="font-display text-2xl text-primary-foreground group-hover:text-primary-foreground/80 transition-colors">
+                  <span className="min-w-0 font-display text-lg text-primary-foreground group-hover:text-primary-foreground/80 transition-colors">
                     {item.label}
                   </span>
                   <ChevronRight
@@ -153,7 +159,7 @@ const MobileNavOverlay = ({ open, onClose }: MobileNavOverlayProps) => {
                     shopExpanded ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <div className="pl-20 pb-2 space-y-3 pr-4">
+                  <div className="pl-13 pb-2 space-y-3 pr-2">
                     <button onClick={() => goTo("/collections")} className="block w-full text-left whitespace-normal break-words text-base font-body text-primary-foreground/60 hover:text-primary-foreground transition-colors">Shop All</button>
                     <button onClick={() => goTo("/shop-by-shapes?cut=brazilian-bikini")} className="block w-full text-left whitespace-normal break-words text-base font-body text-primary-foreground/60 hover:text-primary-foreground transition-colors">Bikini</button>
                     <button onClick={() => goTo("/shop-by-shapes?cut=high-rise-french-cut")} className="block w-full text-left whitespace-normal break-words text-base font-body text-primary-foreground/60 hover:text-primary-foreground transition-colors">French Cut</button>
@@ -165,17 +171,17 @@ const MobileNavOverlay = ({ open, onClose }: MobileNavOverlayProps) => {
               </div>
             ) : (
               <button
-                onClick={() => handleNavigate(item.href!, item.scrollTo)}
-                className="flex items-center gap-4 w-full py-3 group"
+                onClick={() => { if (item.href) handleNavigate(item.href, item.scrollTo); }}
+                className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3 w-full py-3 group text-left"
               >
-                <div className="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0">
+                <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0">
                   <img
                     src={item.image}
                     alt={item.label}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-                <span className="font-display text-2xl text-primary-foreground group-hover:text-primary-foreground/80 transition-colors">
+                <span className="min-w-0 font-display text-lg text-primary-foreground group-hover:text-primary-foreground/80 transition-colors">
                   {item.label}
                 </span>
               </button>
@@ -186,10 +192,10 @@ const MobileNavOverlay = ({ open, onClose }: MobileNavOverlayProps) => {
 
       {/* Footer links */}
       <div
-        className="relative z-10 mt-auto px-6 pb-8 pt-6 opacity-0 animate-nav-item-in"
+        className="relative z-10 mt-auto px-4 pb-8 pt-6 opacity-0 animate-nav-item-in"
         style={{ animationDelay: `${(menuItems.length + 1) * 80}ms` }}
       >
-        <div className="border-t border-primary-foreground/10 pt-6 grid grid-cols-2 gap-x-8 gap-y-2.5">
+        <div className="border-t border-primary-foreground/10 pt-6 grid grid-cols-2 gap-x-3 gap-y-2.5">
           <button
             onClick={() => goTo("/shipping-returns")}
             className="text-left text-xs tracking-[0.15em] uppercase font-body text-primary-foreground/40 hover:text-primary-foreground/70 transition-colors"
@@ -216,6 +222,7 @@ const MobileNavOverlay = ({ open, onClose }: MobileNavOverlayProps) => {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };
