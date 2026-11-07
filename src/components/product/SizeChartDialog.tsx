@@ -15,7 +15,7 @@ const SizeChartDialog = () => {
       <DialogContent className="max-w-4xl w-[calc(100vw-2rem)] max-h-[90dvh] overflow-y-auto rounded-sm p-6 md:p-10">
         <div className="grid gap-8 md:grid-cols-[2fr_3fr]">
           <img
-            src="/images/bikini-espresso-model.webp"
+            src="/images/models/bikini-espresso-model.webp"
             alt="Model wearing the Hertones bikini"
             className="hidden md:block w-full h-full max-h-[520px] object-cover bg-oat"
           />
@@ -49,7 +49,7 @@ const SizeChartDialog = () => {
                   onClick={() => setUnit(u)}
                   aria-pressed={unit === u}
                   className={`h-10 w-16 rounded-sm border transition-colors ${
-                    unit === u ? "border-espresso text-foreground" : "border-border text-foreground/60 hover:border-espresso/40"
+                    unit === u ? "border-espresso bg-espresso text-primary-foreground" : "border-border text-foreground/60 hover:border-espresso/40"
                   }`}
                 >
                   {u}
