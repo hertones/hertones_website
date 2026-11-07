@@ -28,15 +28,29 @@ const ShopByTone = () => {
   const { ref, isVisible } = useScrollReveal();
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
 
-  // Warm the browser cache with every shade once the section is near, so swaps are instant.
+  const [previewsReady, setPreviewsReady] = useState(false);
+
+  // Download and decode all shades before the user reaches the circles.
   useEffect(() => {
-    if (!isVisible) return;
-    tones.forEach((t) => {
-      [getBikiniImage(t.key)?.url, getFrenchCutImage(t.key)?.url, getBoyShortImage(t.key)?.url].forEach((src) => {
-        if (src) { const img = new Image(); img.decoding = "async"; img.src = src; }
+    const section = ref.current;
+    if (!section) return;
+    let cancelled = false;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      observer.disconnect();
+      setPreviewsReady(true);
+      tones.forEach((tone) => {
+        [getBikiniImage(tone.key), getFrenchCutImage(tone.key), getBoyShortImage(tone.key)].forEach((image) => {
+          if (!image || cancelled) return;
+          const img = new Image();
+          img.src = image.url;
+          void img.decode().catch(() => {});
+        });
       });
-    });
-  }, [isVisible]);
+    }, { rootMargin: "1600px 0px" });
+    observer.observe(section);
+    return () => { cancelled = true; observer.disconnect(); };
+  }, [ref]);
 
   useEffect(() => {
     fetchProducts(50).then(setProducts).catch(() => {});
@@ -112,15 +126,26 @@ const ShopByTone = () => {
                   to="/product/$handle" params={{ handle: card.handle }}
                   className="group block"
                 >
-                  <div className="aspect-[3/4] overflow-hidden rounded-lg bg-sand/30">
+                  <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-sand/30">
                     {card.image ? (
-                      <img
-                        src={card.image}
-                        alt={`${activeTone.name} ${card.label}`}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        loading="eager"
-                        decoding="async"
-                      />
+                      tones.filter((tone) => previewsReady || tone.key === activeTone.key).map((tone) => {
+                        const cut = ACTIVE_CUTS[i];
+                        const image = cut?.key === "brazilian-bikini" ? getBikiniImage(tone.key)
+                          : cut?.key === "high-rise-french-cut" ? getFrenchCutImage(tone.key)
+                          : cut?.key === "boy-short" ? getBoyShortImage(tone.key) : null;
+                        const shown = tone.key === activeTone.key;
+                        return (
+                          <img
+                            key={tone.key}
+                            src={image?.url || card.image}
+                            alt={shown ? `${tone.name} ${card.label}` : ""}
+                            aria-hidden={!shown}
+                            className={`absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ${shown ? "opacity-100" : "opacity-0"}`}
+                            loading="eager"
+                            decoding="async"
+                          />
+                        );
+                      })
                     ) : (
                       <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: activeTone.color + '40' }}>
                         <div className="text-center px-4">
