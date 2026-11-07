@@ -274,6 +274,7 @@ const PackDetail = () => {
         isAvailable={true}
         hasSizeSelected={!!selectedCut}
         triggerRef={addToCartRef as React.RefObject<HTMLButtonElement>}
+        selectPrompt="Choose Your Cut"
       />
     </div>
   );
