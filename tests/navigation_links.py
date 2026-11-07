@@ -22,7 +22,7 @@ async def check():
             await page.wait_for_timeout(1500)
             for name, target in DESTINATIONS.items():
                 if width < 768:
-                    await page.locator('nav button').first.click()
+                    await page.locator('nav button').filter(has=page.locator('svg.lucide-menu')).click()
                     menu = page.get_by_role('dialog', name='Navigation menu')
                     await menu.get_by_role('button', name='Shop', exact=True).click()
                 else:
