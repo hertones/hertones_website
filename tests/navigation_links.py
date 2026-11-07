@@ -24,6 +24,9 @@ async def check():
                 if width < 768:
                     await page.locator('nav button').filter(has=page.locator('svg.lucide-menu')).click()
                     menu = page.get_by_role('dialog', name='Navigation menu')
+                    await page.wait_for_timeout(500)
+                    await page.screenshot(path='/tmp/browser/dropdown/mobile-debug.png')
+                    print(await page.locator('body').inner_text(), flush=True)
                     await menu.get_by_role('button', name='Shop', exact=True).click()
                 else:
                     await page.get_by_role('button', name='Shop', exact=True).click()
