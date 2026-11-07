@@ -34,7 +34,7 @@ async def check():
                 card = page.locator('a', has_text=title).first
                 text = await card.inner_text()
                 for expected in (name, badge.upper(), title.upper(), price, 'CHOOSE YOUR CUT'):
-                    assert expected in text.upper(), (width, name, expected, text)
+                    assert expected.upper() in text.upper(), (width, name, expected, text)
 
             # Card click navigates to the pack product page.
             await page.locator('a', has_text='3 Pack Cotton Essentials').first.click()
