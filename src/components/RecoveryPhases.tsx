@@ -206,7 +206,7 @@ const RecoveryPhases = () => {
       style={{ height: isMobile ? "220vh" : "320vh" }}
     >
       <div className="sticky top-16 h-[calc(100dvh-4rem)] flex flex-col items-start justify-start md:justify-center pt-4 md:pt-8 pb-4 md:pb-8">
-        <h2 className={`font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-left mb-4 ml-4 md:ml-8 bg-gradient-to-r from-accent via-espresso to-accent bg-clip-text text-transparent transition-all duration-[800ms] ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-80 translate-y-4'}`}>
+        <h2 className={`shrink-0 self-stretch font-display text-4xl md:text-6xl lg:text-7xl leading-[1.2] font-semibold text-left mb-4 mx-4 md:mx-8 py-2 bg-gradient-to-r from-accent via-espresso to-accent bg-clip-text text-transparent transition-all duration-[800ms] ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-80 translate-y-4'}`}>
           Why It Feels Different
         </h2>
         <div className={`w-full mx-auto rounded-2xl overflow-hidden bg-card shadow-lg transition-all duration-[800ms] ease-out flex-1 min-h-0 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-90 translate-y-3'}`} style={{ transitionDelay: isVisible ? '100ms' : '0ms' }}>
