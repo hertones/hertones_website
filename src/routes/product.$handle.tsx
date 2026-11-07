@@ -10,6 +10,7 @@ export const Route = createFileRoute("/product/$handle")({
         content: "Leakproof hertones underwear in your skin tone.",
       },
       { property: "og:title", content: "Product — hertones" },
+      { property: "og:description", content: "Leakproof hertones underwear in your skin tone." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
