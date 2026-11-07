@@ -2,7 +2,6 @@ export type SizeUnit = "cm" | "in";
 
 /** Body measurements in centimetres: [min, max]. */
 export const SIZE_CHART = [
-  { size: "XS", waist: [61, 65], hip: [86, 90] },
   { size: "S", waist: [66, 71], hip: [91, 95] },
   { size: "M", waist: [72, 77], hip: [96, 100] },
   { size: "L", waist: [78, 83], hip: [101, 105] },
