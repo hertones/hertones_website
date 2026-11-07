@@ -79,7 +79,7 @@ const ProductImageCarousel = ({ images, productTitle, localImages, placeholderIm
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full sm:max-w-sm lg:max-w-md mx-auto">
       {/* Mobile: full-bleed swipeable carousel */}
       <div className="lg:hidden relative">
         <div
@@ -156,7 +156,7 @@ const ProductImageCarousel = ({ images, productTitle, localImages, placeholderIm
         </div>
 
         {/* Main image */}
-        <div className="flex-1 aspect-[3/4] rounded-lg overflow-hidden bg-sand/30 relative group">
+        <div className="flex-1 min-w-0 aspect-[3/4] rounded-lg overflow-hidden bg-sand/30 relative group">
           {slides[activeIndex]?.type === "video" ? (
             <video
               src={slides[activeIndex].url}
