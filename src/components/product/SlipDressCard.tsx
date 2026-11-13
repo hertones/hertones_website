@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 
 import { SLIP_DRESS } from "@/lib/productCatalog";
-const slipDressAsset = { url: "/images/models/tonya-slip-dress-closeup-real.jpg" };
+const slipDressAsset = { url: "/images/models/tonya-slip-dress-closeup-real.webp" };
 const SlipDressCard = ({ className = "", imageContainerClassName = "" }: { className?: string; imageContainerClassName?: string }) => {
   const navigate = useNavigate();
 

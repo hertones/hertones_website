@@ -54,7 +54,7 @@ export const PACKS: Pack[] = [
     badge: "17% Off",
     title: "3 Pack Cotton Essentials",
     price: "$42",
-    image: "/images/pack-3.jpg",
+    image: "/images/pack-3.webp",
     description:
       "Three everyday pairs in a considered mix of body-tone shades. Soft, breathable cotton in the cut you choose — the easy way to start your rotation.",
     shopifyHandle: "3-pack",

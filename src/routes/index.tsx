@@ -3,6 +3,7 @@ import HomePage from "@/pages/Index";
 
 export const Route = createFileRoute("/")({
   head: () => ({
+    links: [{ rel: "preload", as: "image", href: "/images/hero-0.webp", fetchpriority: "high" }],
     meta: [
       { title: "hertones — Leakproof Underwear in Your Skin Tone" },
       {

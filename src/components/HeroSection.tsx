@@ -5,8 +5,8 @@ import CartDrawer from "./CartDrawer";
 import MobileNavOverlay from "./MobileNavOverlay";
 const hero1 = "/images/hero-1.jpg";
 const hero2 = "/images/hero-2.jpg";
-const hero3 = "/images/hero-3.jpg";
-const hero4 = "/images/hero-0.jpg";
+const hero3 = "/images/hero-3.webp";
+const hero4 = "/images/hero-0.webp";
 const slides = [
   {
     image: hero1,

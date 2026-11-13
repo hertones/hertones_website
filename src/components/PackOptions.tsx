@@ -1,5 +1,5 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-const pack3Img = "/images/pack-3.jpg";
+const pack3Img = "/images/pack-3.webp";
 const pack6Img = "/images/pack-6.webp";
 const packAllImg = "/images/pack-all3.webp";
 const packs = [

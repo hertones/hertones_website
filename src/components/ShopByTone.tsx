@@ -7,10 +7,10 @@ import { ACTIVE_TONES, ACTIVE_CUTS, mapToneHandle, renameCut } from "@/lib/produ
 import { getBikiniImage, getFrenchCutImage, getBoyShortImage } from "@/lib/productImages";
 
 // Local images for tones that have them
-const caramel1 = "/images/products/caramel-1.png";
-const caramel5 = "/images/products/caramel-5.png";
-const espresso1 = "/images/products/espresso-1.png";
-const espresso5 = "/images/products/espresso-5.png";
+const caramel1 = "/images/products/caramel-1.webp";
+const caramel5 = "/images/products/caramel-5.webp";
+const espresso1 = "/images/products/espresso-1.webp";
+const espresso5 = "/images/products/espresso-5.webp";
 const tones = ACTIVE_TONES.map((t) => ({ name: t.name, color: t.hex, key: t.key }));
 
 // Local hero images per tone (only for tones with uploaded photos)

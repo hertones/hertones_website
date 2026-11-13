@@ -3,8 +3,8 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { X, ChevronRight } from "lucide-react";
 const hero1 = "/images/hero-1.jpg";
 const hero2 = "/images/hero-2.jpg";
-const hero3 = "/images/hero-3.jpg";
-const pack3 = "/images/pack-3.jpg";
+const hero3 = "/images/hero-3.webp";
+const pack3 = "/images/pack-3.webp";
 const assortmentPack = "/images/assortment-pack.jpg";
 import { scrollToSection } from "@/lib/scrollToSection";
 

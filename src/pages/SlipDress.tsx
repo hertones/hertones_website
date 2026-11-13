@@ -16,9 +16,9 @@ import { CHAMPAGNE_TONE, SLIP_DRESS } from "@/lib/productCatalog";
 import { toast } from "sonner";
 
 const slipDressImages = [
-  { url: "/images/models/tonya-slip-dress-fullbody-real.jpg", alt: "Tonya Slip Dress — Full Body" },
+  { url: "/images/models/tonya-slip-dress-fullbody-real.webp", alt: "Tonya Slip Dress — Full Body" },
 
-  { url: "/images/models/tonya-slip-dress-closeup-real.jpg", alt: "Tonya Slip Dress — Close Up" },
+  { url: "/images/models/tonya-slip-dress-closeup-real.webp", alt: "Tonya Slip Dress — Close Up" },
 ];
 
 const SlipDress = () => {
